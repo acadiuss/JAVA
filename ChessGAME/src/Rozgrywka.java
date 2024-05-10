@@ -7,18 +7,14 @@ public class Rozgrywka {
 
     private final int SIZE;
     private Pole[][] szachownica;
-    private boolean czyRuchBialych;
     private List<Ruch> historiaRuchow;
-    private Figura selectedFigura;
-    private int selectedRow = -1;
-    private int selectedCol = -1;
-public boolean result = false;
+    private boolean isWhiteTurn = true;
+
     public Rozgrywka(int size) {
         this.SIZE = size;
         this.szachownica = new Pole[SIZE][SIZE];
-        this.czyRuchBialych = true; // Białe zaczynają grę
-        this.historiaRuchow = new ArrayList<>();
-        setupInitialBoard(); // Inicjowanie planszy
+        setupInitialBoard();
+
     }
 
 
@@ -53,45 +49,38 @@ public boolean result = false;
 
     }
 
+
     public boolean wykonajRuch(int startX, int startY, int destX, int destY) {
         if (szachownica[startX][startY] != null && szachownica[startX][startY].getFigura() != null) {
             Figura movingFigura = szachownica[startX][startY].getFigura();
-            // Sprawdzanie, czy cel nie jest zajęty przez figurę tego samego koloru
-            if (szachownica[destX][destY].getFigura() != null && szachownica[destX][destY].getFigura().getKolor().equals(movingFigura.getKolor())) {
-                return false; // Nie pozwól na bicie figur tego samego koloru
-            }
-            if (movingFigura.czyMozliwyRuch(startX, startY, destX, destY, szachownica)) {
-                // Przenosimy figurę
-                szachownica[destX][destY].setFigura(movingFigura);
-                szachownica[startX][startY].setFigura(null);
 
-                // Zmiana tury
-                czyRuchBialych = !czyRuchBialych;
-
-                // Promocja piona, jeśli dotyczy
-                if (movingFigura instanceof Pion && (destX == 0 || destX == szachownica.length - 1)) {
-                    Figura newPiece = ((Pion) movingFigura).promotePawn(movingFigura.getKolor().equals("biały"));
-                    szachownica[destX][destY].setFigura(newPiece);
+            // Sprawdzenie, czy ruch wykonywany jest przez właściwego gracza
+            if ((isWhiteTurn && movingFigura.getKolor().equals("biały")) || (!isWhiteTurn && movingFigura.getKolor().equals("czarny"))) {
+                // Sprawdzanie, czy cel nie jest zajęty przez figurę tego samego koloru
+                if (szachownica[destX][destY].getFigura() != null && szachownica[destX][destY].getFigura().getKolor().equals(movingFigura.getKolor())) {
+                    return false; // Nie pozwól na bicie figur tego samego koloru
                 }
+                if (movingFigura.czyMozliwyRuch(startX, startY, destX, destY, szachownica)) {
+                    // Przenoszenie figury
+                    szachownica[destX][destY].setFigura(movingFigura);
+                    szachownica[startX][startY].setFigura(null);
 
-                return true;
+                    // Zmiana tury
+                    isWhiteTurn = !isWhiteTurn;
+
+                    // Promocja piona, jeśli dotyczy
+                    if (movingFigura instanceof Pion && (destX == 0 || destX == szachownica.length - 1)) {
+                        Figura newPiece = ((Pion) movingFigura).promotePawn(movingFigura.getKolor().equals("biały"));
+                        szachownica[destX][destY].setFigura(newPiece);
+                    }
+
+                    return true;
+                }
             }
         }
         return false;
     }
-
-
-
-    // Metoda czyszcząca podświetlenie pól
-    private void clearHighlightedFields() {
-        // Implementacja czyszczenia podświetlenia pól
-    }
-
     public Pole[][] getSzachownica() {
         return szachownica;
-    }
-
-    public List<Ruch> getHistoriaRuchow() {
-        return historiaRuchow;
     }
 }
