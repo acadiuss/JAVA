@@ -25,12 +25,12 @@ public class Rozgrywka {
         //rozmieszczenie poczatkowe figur na szachownicy
 
         szachownica[0][0] = new Pole(new Wieza(false));
-        //szachownica[0][1] = new Pole(new Skoczek(false));
-        //szachownica[0][2] = new Pole(new Goniec(false));
-        //szachownica[0][3] = new Pole(new Hetman(false));
+        szachownica[0][1] = new Pole(new Skoczek(false));
+        szachownica[0][2] = new Pole(new Goniec(false));
+        szachownica[0][3] = new Pole(new Hetman(false));
         szachownica[0][4] = new Pole(new Krol(false));
-        //szachownica[0][5] = new Pole(new Goniec(false));
-        //szachownica[0][6] = new Pole(new Skoczek(false));
+        szachownica[0][5] = new Pole(new Goniec(false));
+        szachownica[0][6] = new Pole(new Skoczek(false));
         szachownica[0][7] = new Pole(new Wieza(false));
 
         for (int i = 0; i < 8; i++) {
@@ -39,12 +39,12 @@ public class Rozgrywka {
         }
 
         szachownica[7][0] = new Pole(new Wieza(true));
-        //szachownica[7][1] = new Pole(new Skoczek(true));
-        //szachownica[7][2] = new Pole(new Goniec(true));
-        //szachownica[7][3] = new Pole(new Hetman(true));
+        szachownica[7][1] = new Pole(new Skoczek(true));
+        szachownica[7][2] = new Pole(new Goniec(true));
+        szachownica[7][3] = new Pole(new Hetman(true));
         szachownica[7][4] = new Pole(new Krol(true));
-        //szachownica[7][5] = new Pole(new Goniec(true));
-        //szachownica[7][6] = new Pole(new Skoczek(true));
+        szachownica[7][5] = new Pole(new Goniec(true));
+        szachownica[7][6] = new Pole(new Skoczek(true));
         szachownica[7][7] = new Pole(new Wieza(true));
 
 

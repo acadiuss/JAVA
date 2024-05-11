@@ -11,14 +11,14 @@ public class Szachownica extends JFrame {
 
     public Szachownica() {
         this.rozgrywka = new Rozgrywka(SIZE);
-        setTitle("SZACHY");
+        setTitle("SZACHY LOTNIKÓW");
         setSize(WINDOW_SIZE, WINDOW_SIZE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
         JPanel chessBoard = new JPanel(new GridLayout(SIZE, SIZE));
         initializeBoard(chessBoard);
         add(chessBoard, BorderLayout.CENTER);
+
     }
 
     private void initializeBoard(JPanel chessBoard) {
@@ -28,7 +28,7 @@ public class Szachownica extends JFrame {
                 int finalRow = row;
                 int finalCol = col;
                 button.addActionListener(e -> handleButtonClick(finalRow, finalCol));
-                button.setBackground((row + col) % 2 == 0 ? Color.darkGray : Color.WHITE);
+                button.setBackground((row + col) % 2 == 0 ? new Color(	221, 12, 57): Color.WHITE);
                 buttons[row][col] = button;
                 chessBoard.add(button);
             }
