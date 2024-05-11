@@ -1,4 +1,5 @@
-import javax.swing.ImageIcon;
+import javax.swing.*;
+
 public abstract class Figura {
     protected String kolor;
     protected int waga;
@@ -7,7 +8,6 @@ public abstract class Figura {
     public Figura(String kolor, ImageIcon imageIcon, int waga) {
         this.kolor = kolor;
         this.imageIcon = imageIcon;
-        this.waga = waga;
     }
 
     public abstract boolean czyMozliwyRuch(int startX, int startY, int destX, int destY, Pole[][] szachownica);
@@ -20,8 +20,5 @@ public abstract class Figura {
         return kolor;
     }
 
-    public int getWaga() {
-        return waga;
-    }
 
 }

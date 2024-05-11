@@ -16,17 +16,8 @@ public class Wieza extends Figura {
     }
 
     @Override
-    public int getWaga() {
-        return 5;
-    }
-
-    @Override
     public boolean czyMozliwyRuch(int startX, int startY, int destX, int destY, Pole[][] szachownica) {
-        if (startX == destX && startY == destY) {
-            return false;
-        }
 
-        // Sprawdź, czy figura porusza się wzdłuż kolumny lub rzędu
         if (startX == destX || startY == destY) {
             // Sprawdź, czy na drodze nie ma żadnych przeszkód
             int dX = Integer.compare(destX, startX);
@@ -36,7 +27,7 @@ public class Wieza extends Figura {
 
             while (currentX != destX || currentY != destY) {
                 if (szachownica[currentX][currentY].getFigura() != null) {
-                    // Jest przeszkoda na drodze
+                    //jesli na drodze jest figura nie wykonuj tuchu
                     return false;
                 }
                 currentX += dX;

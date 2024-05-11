@@ -14,44 +14,51 @@ public class Pion extends Figura {
         int direction = this.kolor.equals("biały") ? -1 : 1;
         int promotionRow = this.kolor.equals("biały") ? 0 : szachownica.length - 1;
 
-        // Normalny ruch o jedno pole do przodu na puste pole
+        if (startX == destX && startY == destY) {
+            return false;
+        }
+        // +1 pole
         if (startX + direction == destX && startY == destY && szachownica[destX][destY].getFigura() == null) {
             return true;
         }
 
-        // Ruch o dwa pola do przodu na puste pole jako pierwszy ruch
+        // +2 pola pierwszy ruch tylko
         if (czyPierwszyRuch && startX + 2 * direction == destX && startY == destY &&
                 szachownica[destX - direction][destY].getFigura() == null &&
                 szachownica[destX][destY].getFigura() == null) {
             return true;
         }
 
-        // Bicie na skos
+        // bicie
         if ((startX + direction == destX && (startY + 1 == destY || startY - 1 == destY)) &&
                 szachownica[destX][destY].getFigura() != null &&
                 !szachownica[destX][destY].getFigura().getKolor().equals(this.kolor)) {
             return true;
         }
+        //bicie w przelocie!
 
-        // Sprawdzenie promocji piona
-        if (destX == promotionRow) {
+
+        // czy promocja piona
+        if ((destX == promotionRow) && (startX==1 || startX ==7)) {
             return true;
         }
 
-        return false; // Inne ruchy są niemożliwe
-    }
+        return false;
 
+    }
     public Figura promotePawn(boolean isWhite) {
-        Object[] options = {"Hetman", "Wieza", "Goniec", "Skoczek"};
+        Object[] options = {"Pion","Skoczek", "Goniec", "Wieza" ,"Hetman"};
         int choice = JOptionPane.showOptionDialog(null, "Wybierz figurę na promocję:",
                 "Promocja Piona", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
 
         switch (choice) {
-            case 1: return new Wieza(isWhite);
+            case 1: return new Skoczek(isWhite);
             case 2: return new Goniec(isWhite);
-            case 3: return new Skoczek(isWhite);
-            default: return new Hetman(isWhite);
+            case 3: return new Wieza(isWhite);
+            case 4: return new Hetman(isWhite);
+            default: return new Pion(isWhite);
         }
     }
+
 }

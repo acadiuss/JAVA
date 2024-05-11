@@ -8,12 +8,10 @@ public class Skoczek extends Figura {
 
     @Override
     public boolean czyMozliwyRuch(int startX, int startY, int destX, int destY, Pole[][] szachownica) {
-        // Sprawdź, czy figura nie próbuje poruszyć się na to samo pole
         if (startX == destX && startY == destY) {
             return false;
         }
-
-        // Oblicz różnice między współrzędnymi X i Y
+        // oblicz różnice między współrzędnymi X i Y
         int deltaX = Math.abs(destX - startX);
         int deltaY = Math.abs(destY - startY);
 

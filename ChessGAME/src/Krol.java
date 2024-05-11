@@ -8,11 +8,14 @@ public class Krol extends Figura {
 
     @Override
     public boolean czyMozliwyRuch(int startX, int startY, int destX, int destY, Pole[][] szachownica) {
-        // Szybkie sprawdzenie, czy ruch jest poza zakresem jednego pola w każdym kierunku
+        if (startX == destX && startY == destY) {
+            return false;
+        }
         if (Math.abs(destX - startX) > 1 || Math.abs(destY - startY) > 1) return false;
-
-        // Sprawdzenie czy docelowe pole jest wolne lub zajęte przez przeciwnika
+        //czy wolne pole czy zajete przez przeciwnika
         Figura targetFigura = szachownica[destX][destY].getFigura();
         return targetFigura == null || !targetFigura.getKolor().equals(this.getKolor());
     }
-}
+      ////roszada
+    }
+
