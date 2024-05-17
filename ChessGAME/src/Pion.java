@@ -35,17 +35,26 @@ public class Pion extends Figura {
                 !szachownica[destX][destY].getFigura().getKolor().equals(this.kolor)) {
             return true;
         }
-        //bicie w przelocie!
-
+        // bicie w przelocie
+        if (startX + direction == destX && (startY + 1 == destY || startY - 1 == destY) &&
+                szachownica[destX][destY].getFigura() == null) {
+            Figura sasiad = szachownica[startX][startY + (destY - startY)].getFigura();
+            if (sasiad instanceof Pion && ((Pion) sasiad).czyPierwszyRuch &&
+                    !sasiad.getKolor().equals(this.kolor)) {
+                // Usuwanie piona przeciwnika z pola, przez które pion przeskoczył
+                szachownica[startX][startY + (destY - startY)].setFigura(null);
+                return true;
+            }
+        }
 
         // czy promocja piona
         if ((destX == promotionRow) && (startX==1 || startX ==7)) {
             return true;
         }
-
         return false;
-
     }
+
+
     public Figura promotePawn(boolean isWhite) {
         Object[] options = {"Pion","Skoczek", "Goniec", "Wieza" ,"Hetman"};
         int choice = JOptionPane.showOptionDialog(null, "Wybierz figurę na promocję:",

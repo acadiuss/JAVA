@@ -16,6 +16,10 @@ public class Krol extends Figura {
         Figura targetFigura = szachownica[destX][destY].getFigura();
         return targetFigura == null || !targetFigura.getKolor().equals(this.getKolor());
     }
-      ////roszada
+    @Override
+    public boolean isKrol() {
+        return true;
+    }
+
     }
 

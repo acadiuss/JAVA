@@ -5,58 +5,50 @@ import java.util.List;
 
 public class Rozgrywka {
 
-    private final int SIZE;
+
     private Pole[][] szachownica;
     private boolean isWhiteTurn = true;
 
-    public Rozgrywka(int size) {
-        this.SIZE = size;
-        this.szachownica = new Pole[SIZE][SIZE];
+    public Rozgrywka() {
+        this.szachownica = new Pole[8][8];
         setupInitialBoard();
     }
 
     private void setupInitialBoard() {
-        // inicjaalizacja kazdego pola jako puste
+        boolean z = false;
+
         for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < SIZE; col++) {
+            for (int col = 0; col < 8; col++) {
                 szachownica[row][col] = new Pole(null);
             }
         }
-        //rozmieszczenie poczatkowe figur na szachownicy
-
-        szachownica[0][0] = new Pole(new Wieza(false));
-        szachownica[0][1] = new Pole(new Skoczek(false));
-        szachownica[0][2] = new Pole(new Goniec(false));
-        szachownica[0][3] = new Pole(new Hetman(false));
-        szachownica[0][4] = new Pole(new Krol(false));
-        szachownica[0][5] = new Pole(new Goniec(false));
-        szachownica[0][6] = new Pole(new Skoczek(false));
-        szachownica[0][7] = new Pole(new Wieza(false));
-
-        for (int i = 0; i < 8; i++) {
-            szachownica[1][i] = new Pole(new Pion(false));
-            szachownica[6][i] = new Pole(new Pion(true));
+        for (int k = 0; k <= 8; k+=7) {
+            szachownica[k][0] = new Pole(new Wieza(z));
+            szachownica[k][1] = new Pole(new Skoczek(z));
+            szachownica[k][2] = new Pole(new Goniec(z));
+            szachownica[k][3] = new Pole(new Hetman(z));
+            szachownica[k][4] = new Pole(new Krol(z));
+            szachownica[k][5] = new Pole(new Goniec(z));
+            szachownica[k][6] = new Pole(new Skoczek(z));
+            szachownica[k][7] = new Pole(new Wieza(z));
+            z=!z;
         }
-
-        szachownica[7][0] = new Pole(new Wieza(true));
-        szachownica[7][1] = new Pole(new Skoczek(true));
-        szachownica[7][2] = new Pole(new Goniec(true));
-        szachownica[7][3] = new Pole(new Hetman(true));
-        szachownica[7][4] = new Pole(new Krol(true));
-        szachownica[7][5] = new Pole(new Goniec(true));
-        szachownica[7][6] = new Pole(new Skoczek(true));
-        szachownica[7][7] = new Pole(new Wieza(true));
-
-
+        for (int i = 0; i < 8; i++) {
+            szachownica[1][i] = new Pole(new Pion(z));
+            szachownica[6][i] = new Pole(new Pion(!z));
+        }
     }
 
-    public boolean wykonajRuch(int startX, int startY, int destX, int destY) {
+        public boolean wykonajRuch(int startX, int startY, int destX, int destY) {
         if (szachownica[startX][startY] != null && szachownica[startX][startY].getFigura() != null) {
             Figura movingFigura = szachownica[startX][startY].getFigura();
 
             // ruchy na zmiane
             if ((isWhiteTurn && movingFigura.getKolor().equals("biały")) || (!isWhiteTurn && movingFigura.getKolor().equals("czarny"))) {
                 // zapobieganie przed ruchem na pozycje tego samego koloru
+                if (szachownica[destX][destY].getFigura() != null && szachownica[destX][destY].getFigura().isKrol()) {
+                    return false;
+                }
                 if (szachownica[destX][destY].getFigura() != null && szachownica[destX][destY].getFigura().getKolor().equals(movingFigura.getKolor())) {
                     return false;
                 }
@@ -79,6 +71,8 @@ public class Rozgrywka {
         }
         return false;
     }
+
+
     public Pole[][] getSzachownica() {
         return szachownica;
     }

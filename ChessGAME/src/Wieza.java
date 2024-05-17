@@ -1,18 +1,14 @@
 import javax.swing.ImageIcon;
 
 
-
-
-//WYKONYWANIE RUCH BICIA TEGO SAMEGO KOLORU !!!!!!!!!!!rozbudowa
-
-/// if (!szachownica[destX][destY].getFigura().getKolor().equals(this.getKolor())){
-//            return false;}
-
-
 public class Wieza extends Figura {
+    private boolean czyPierwszyRuch = true;
 
     public Wieza(boolean isWhite) {
         super(isWhite ? "biały" : "czarny", new ImageIcon(Wieza.class.getResource(isWhite ? "/figurypng/ww.png" : "/figurypng/bw.png")), 1000);
+    }
+    public boolean isCzyPierwszyRuch() {
+        return czyPierwszyRuch;
     }
 
     @Override
@@ -38,4 +34,8 @@ public class Wieza extends Figura {
         return false;
 
     }
+    /*@Override
+    public boolean ifSzach() {
+        return true;
+    }*/
 }
