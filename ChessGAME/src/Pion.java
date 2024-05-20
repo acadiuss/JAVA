@@ -55,13 +55,13 @@ public class Pion extends Figura {
     }
 
 
-    public Figura promotePawn(boolean isWhite) {
+    public Figura promocja(boolean isWhite) {
         Object[] options = {"Pion","Skoczek", "Goniec", "Wieza" ,"Hetman"};
-        int choice = JOptionPane.showOptionDialog(null, "Wybierz figurę na promocję:",
+        int wybiez = JOptionPane.showOptionDialog(null, "Wybierz figurę na promocję:",
                 "Promocja Piona", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
 
-        switch (choice) {
+        switch (wybiez) {
             case 1: return new Skoczek(isWhite);
             case 2: return new Goniec(isWhite);
             case 3: return new Wieza(isWhite);

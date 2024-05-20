@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Rozgrywka {
 
-
     private Pole[][] szachownica;
     private boolean isWhiteTurn = true;
 
@@ -13,7 +12,6 @@ public class Rozgrywka {
         this.szachownica = new Pole[8][8];
         setupInitialBoard();
     }
-
     private void setupInitialBoard() {
         boolean z = false;
 
@@ -38,8 +36,7 @@ public class Rozgrywka {
             szachownica[6][i] = new Pole(new Pion(!z));
         }
     }
-
-        public boolean wykonajRuch(int startX, int startY, int destX, int destY) {
+    public boolean makeAmove(int startX, int startY, int destX, int destY) {
         if (szachownica[startX][startY] != null && szachownica[startX][startY].getFigura() != null) {
             Figura movingFigura = szachownica[startX][startY].getFigura();
 
@@ -61,7 +58,7 @@ public class Rozgrywka {
 
                     // Promocja piona
                     if (movingFigura instanceof Pion && (destX == 0 || destX == szachownica.length - 1)) {
-                        Figura newPiece = ((Pion) movingFigura).promotePawn(movingFigura.getKolor().equals("biały"));
+                        Figura newPiece = ((Pion) movingFigura).promocja(movingFigura.getKolor().equals("biały"));
                         szachownica[destX][destY].setFigura(newPiece);
                     }
 
@@ -70,9 +67,9 @@ public class Rozgrywka {
             }
         }
         return false;
+
+
     }
-
-
     public Pole[][] getSzachownica() {
         return szachownica;
     }

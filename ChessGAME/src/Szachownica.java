@@ -19,7 +19,6 @@ public class Szachownica extends JFrame {
         add(chessBoard, BorderLayout.CENTER);
 
     }
-
     private void initializeBoard(JPanel chessBoard) {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
@@ -36,7 +35,7 @@ public class Szachownica extends JFrame {
     }
     private void handleButtonClick(int row, int col) {
         if (selectedRow != -1 && selectedCol != -1) {
-            if (rozgrywka.wykonajRuch(selectedRow, selectedCol, row, col)) {
+            if (rozgrywka.makeAmove(selectedRow, selectedCol, row, col)) {
                 updateBoard();
             }
             selectedRow = -1;
@@ -46,7 +45,6 @@ public class Szachownica extends JFrame {
             selectedCol = col;
         }
     }
-
     public void updateBoard() {
         Pole[][] szachownica = rozgrywka.getSzachownica();
         for (int row = 0; row < 8; row++) {
@@ -62,7 +60,6 @@ public class Szachownica extends JFrame {
         revalidate();
         repaint();
     }
-
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             Szachownica chessBoard = new Szachownica();

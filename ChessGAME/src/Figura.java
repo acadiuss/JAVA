@@ -6,8 +6,6 @@ public abstract class Figura {
     protected ImageIcon imageIcon;
 
 
-
-
     public Figura(String kolor, ImageIcon imageIcon, int waga) {
         this.kolor = kolor;
         this.imageIcon = imageIcon;
