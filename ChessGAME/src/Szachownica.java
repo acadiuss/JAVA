@@ -2,15 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Szachownica extends JFrame {
+
     private static final int WINDOW_SIZE = 800;
     private JButton[][] buttons = new JButton[8][8];
+
     private Rozgrywka rozgrywka;
-    private int selectedRow = -1;
-    private int selectedCol = -1;
+    private int startX = -1;
+    private int startY = -1;
 
     public Szachownica() {
         this.rozgrywka = new Rozgrywka();
         setTitle("SZACHY LOTNIKÓW");
+        ImageIcon icon = new ImageIcon("ico3.ico");
+        setIconImage(icon.getImage());
         setSize(WINDOW_SIZE, WINDOW_SIZE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -34,15 +38,15 @@ public class Szachownica extends JFrame {
         updateBoard();
     }
     private void handleButtonClick(int row, int col) {
-        if (selectedRow != -1 && selectedCol != -1) {
-            if (rozgrywka.makeAmove(selectedRow, selectedCol, row, col)) {
+        if (startX != -1 && startY != -1) {
+            if (rozgrywka.makeAmove(startX, startY, row, col)) {
                 updateBoard();
             }
-            selectedRow = -1;
-            selectedCol = -1;
+            startX = -1;
+            startY = -1;
         } else {
-            selectedRow = row;
-            selectedCol = col;
+            startX = row;
+            startY = col;
         }
     }
     public void updateBoard() {

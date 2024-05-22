@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 public class Skoczek extends Figura {
 
     public Skoczek(boolean isWhite) {
-        super(isWhite ? "biały" : "czarny", new ImageIcon(Skoczek.class.getResource(isWhite ? "/figurypng/ws.png" : "/figurypng/bs.png")), 1000);
+        super(isWhite ? "biały" : "czarny", new ImageIcon(Skoczek.class.getResource(isWhite ? "/figurypng/ws.png" : "/figurypng/bs.png")), 3);
     }
 
     @Override
@@ -23,3 +23,4 @@ public class Skoczek extends Figura {
         return isDeltaValid;
     }
 }
+

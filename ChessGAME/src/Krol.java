@@ -11,12 +11,21 @@ public class Krol extends Figura {
         if (startX == destX && startY == destY) {
             return false;
         }
-        if (Math.abs(destX - startX) > 1 || Math.abs(destY - startY) > 1) return false;
-        //czy wolne pole czy zajete przez przeciwnika
+        if (Math.abs(destX - startX) > 1 || Math.abs(destY - startY) > 1) {
+            return false;
+        }
+
         Figura targetFigura = szachownica[destX][destY].getFigura();
-        return targetFigura == null || !targetFigura.getKolor().equals(this.getKolor());
-    }
+
+        if (targetFigura == null) {
+            return true; // Pole docelowe jest puste
+        } else if (!targetFigura.getKolor().equals(this.getKolor())) {
+            return true;  // Na polu docelowym jest figura przeciwnika
+        } else {
+            return false; // ten sam kolor figury
+        }}
     @Override
+
     public boolean isKrol() {
         return true;
     }

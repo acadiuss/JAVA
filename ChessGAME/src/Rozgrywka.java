@@ -7,7 +7,6 @@ public class Rozgrywka {
 
     private Pole[][] szachownica;
     private boolean isWhiteTurn = true;
-
     public Rozgrywka() {
         this.szachownica = new Pole[8][8];
         setupInitialBoard();
@@ -39,7 +38,6 @@ public class Rozgrywka {
     public boolean makeAmove(int startX, int startY, int destX, int destY) {
         if (szachownica[startX][startY] != null && szachownica[startX][startY].getFigura() != null) {
             Figura movingFigura = szachownica[startX][startY].getFigura();
-
             // ruchy na zmiane
             if ((isWhiteTurn && movingFigura.getKolor().equals("biały")) || (!isWhiteTurn && movingFigura.getKolor().equals("czarny"))) {
                 // zapobieganie przed ruchem na pozycje tego samego koloru
@@ -54,21 +52,19 @@ public class Rozgrywka {
                     szachownica[destX][destY].setFigura(movingFigura);
                     szachownica[startX][startY].setFigura(null);
 
-                    isWhiteTurn = !isWhiteTurn; //ruch nastepnego koloru
-
                     // Promocja piona
                     if (movingFigura instanceof Pion && (destX == 0 || destX == szachownica.length - 1)) {
                         Figura newPiece = ((Pion) movingFigura).promocja(movingFigura.getKolor().equals("biały"));
                         szachownica[destX][destY].setFigura(newPiece);
                     }
 
+                    isWhiteTurn = !isWhiteTurn; //ruch nastepnego koloru
+
                     return true;
                 }
             }
         }
         return false;
-
-
     }
     public Pole[][] getSzachownica() {
         return szachownica;

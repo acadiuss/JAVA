@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 public class Goniec extends Figura {
 
     public Goniec(boolean isWhite) {
-        super(isWhite ? "biały" : "czarny", new ImageIcon(Goniec.class.getResource(isWhite ? "/figurypng/wg.png" : "/figurypng/bg.png")), 1000);
+        super(isWhite ? "biały" : "czarny", new ImageIcon(Goniec.class.getResource(isWhite ? "/figurypng/wg.png" : "/figurypng/bg.png")), 3);
     }
 
     @Override
@@ -31,3 +31,5 @@ public class Goniec extends Figura {
         return false;
     }
 }
+
+

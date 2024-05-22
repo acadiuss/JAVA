@@ -34,8 +34,4 @@ public class Wieza extends Figura {
         return false;
 
     }
-    /*@Override
-    public boolean ifSzach() {
-        return true;
-    }*/
 }

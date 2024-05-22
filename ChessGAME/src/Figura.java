@@ -6,17 +6,16 @@ public abstract class Figura {
     protected ImageIcon imageIcon;
 
 
-    public Figura(String kolor, ImageIcon imageIcon, int waga) {
+    public Figura(String kolor, ImageIcon imageIcon, int wagaF) {
         this.kolor = kolor;
         this.imageIcon = imageIcon;
+        this.waga=wagaF;
     }
-
     public abstract boolean czyMozliwyRuch(int startX, int startY, int destX, int destY, Pole[][] szachownica);
 
     public ImageIcon getIcon() {
         return imageIcon;
     }
-
     public String getKolor() {
         return kolor;
     }
@@ -24,10 +23,8 @@ public abstract class Figura {
     public boolean isKrol() {
         return false;
     }
-    /*public boolean ifSzach() {
-        if(czyMozliwyRuch(/*dla  figur pion wierza hetman skoczek goneic któóre sa aktualnie na planszy public boolean wykonajRuch(int startX, int startY, int destX, int destY) {
-        if (szachownica[startX][startY] != null && szachownica[startX][startY].getFigura() != null) {
-            Figura movingFigura = szachownica[startX][startY].getFigura(); dest == pozycja krola szachownica[destX][destY].getFigura().isKrol()) i jest mozliwa jak funkcja zwruci true to return true "szach"))
-        return false;
-    }*/
+
 }
+
+
+
