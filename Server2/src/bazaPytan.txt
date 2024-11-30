@@ -1,0 +1,59 @@
+Pytanie 1: Co oznacza skrót TCP?
+Transmission Control Protocol
+Transfer Control Protocol
+Transmission Command Protocol
+Transfer Command Protocol
+
+Pytanie 2: Jaka jest główna różnica między TCP a UDP?
+TCP jest szybsze od UDP
+UDP oferuje niezawodne dostarczanie danych
+TCP gwarantuje dostarczenie danych, a UDP nie
+UDP korzysta z połączeń, a TCP nie
+
+Pytanie 3: Do czego służy protokół SSH?
+Bezpieczne zdalne logowanie
+Transfer plików
+Monitorowanie sieci
+Zarządzanie bazami danych
+
+Pytanie 4: Na którym porcie standardowo działa SSH?
+21
+22
+23
+80
+
+Pytanie 5: Które z poniższych stwierdzeń dotyczy protokołu UDP?
+Zapewnia niezawodne dostarczanie danych
+Używa mechanizmu trójfazowego uzgadniania
+Jest bardziej efektywny w aplikacjach czasu rzeczywistego
+Zapewnia korekcję błędów
+
+Pytanie 6: Ile portów jest dostępnych w protokołach TCP i UDP?
+1024
+65535
+65536
+32000
+
+Pytanie 7: Jak nazywa się proces ustanawiania połączenia w TCP?
+Trójfazowe uzgadnianie
+Dwufazowe uzgadnianie
+Ustanawianie tunelu
+Ręczne uzgadnianie
+
+Pytanie 8: Który z poniższych protokołów jest bezpołączeniowy?
+TCP
+UDP
+SSH
+FTP
+
+Pytanie 9: Który port jest używany przez HTTP?
+21
+22
+80
+443
+
+Pytanie 10: Co oznacza skrót FTP?
+File Transfer Protocol
+Fast Transfer Protocol
+File Transport Protocol
+Fast Transport Protocol
